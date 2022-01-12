@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meteo</title>
-    <style href="style.css"></style>
 </head>
 <body>
-<nav><span><a>Accueil</a><a>Contact</a><a>Accueil</a></span></nav>
-<div><input id="search">
-    <button>Rechercher</button></div>
+<script src="js/global.js"></script>
+<nav>
+    <h1>METEO</h1>
+    <span>
+    <a href="#">Accueil</a>
+    <a href="contact">Contact</a>
+    <a href="aide">Aide</a>
+    </span>
+</nav>
+<div class="search-div"><input id="search">
+    <button onclick="search()">Rechercher</button>
+</div>
+<div id="search-result">
+    <h1 id="ville"></h1>
+    <h1 id="pays"></h1>
+    <h1 id="description"></h1>
 
+
+
+</div>
+
+
+<footer>
+    Meteo 2022
+</footer>
 </body>
 </html>
