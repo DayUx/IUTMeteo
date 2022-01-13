@@ -38,6 +38,7 @@ function search() {
         data => {
             document.getElementById("ville").innerHTML = data.city.name;
             document.getElementById("pays").innerHTML = data.city.country;
+            document.getElementById("search-result-meteo").innerHTML="";
             for (let i = 0; i < data.list.length; i++) {
                 createElem(data.list[i], i, data.list);
             }
