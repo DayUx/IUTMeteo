@@ -1,17 +1,48 @@
 body{
-    padding: 0;
+    padding: 0 0 200px 0;
     margin: 0;
     width: 100%;
-    min-height: 100%;
+    height: 100%;
     font-family: Calibri;
     background: rgb(0,114,139);
     background: linear-gradient(180deg, rgba(0,114,139,1) 0%, rgba(1,140,164,1) 47%, rgba(61,201,193,1) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
-html {
+body:after {
+    background-image: url("./img/noise.png");
+    background-size: 500px;
+    bottom: 0;
+    content: " ";
     height: 100%;
-    overflow: hidden;
+    left: 0;
+    opacity: 1 ;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
+
+body:before {
+    background-image: url("./img/overlayLine.svg");
+    background-size: 10px;
+    bottom: 0;
+    content: " ";
+    height: 100%;
+    left: 0;
+    opacity: 1 ;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 101;
+}
+
 nav{
     display: flex;
     justify-content: space-between;
@@ -19,8 +50,8 @@ nav{
     flex-direction: row;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 5px;
-    backdrop-filter: blur();
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
     margin: 5px;
 
 }
@@ -50,20 +81,20 @@ nav a:hover{
 }
 
 .search-div{
-    width: 100%;
+    width: 75%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 100px;
+    margin:100px auto;
 }
 .search-div input{
-    width: 50%;
+    flex: max-content;
     height: 60px;
     border-radius: 100px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur();
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
     color: #fff;
     font-size: 20px;
     padding: 0 20px 0 20px;
@@ -73,8 +104,8 @@ nav a:hover{
     border-radius: 100px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur();
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
     color: #fff;
     height: 60px;
     padding: 0 40px 0 40px;
@@ -82,6 +113,9 @@ nav a:hover{
     transition: 0.1s ease-in-out;
     margin-left: 20px;
 
+}
+button:hover{
+    cursor: pointer;
 }
 
 .search-div button:hover {
@@ -92,27 +126,61 @@ nav a:hover{
 #search-result{
     margin: auto;
     border-radius:15px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    /*border: 2px solid rgba(255, 255, 255, 0.3);*/
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur();
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
     color: #fff;
     width: 75%;
     padding: 20px;
-    margin-top: 100px;
+    box-sizing: border-box;
+    height: 1000px;
 }
+
+.container {
+    width: 30rem;
+    height: 20rem;
+    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+}
+
+.container:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: -20px;
+}
+
 
 footer{
     position: absolute;
+    float: bottom;
     bottom: 0;
     height: 100px;
     border-top: 2px solid rgba(255, 255, 255, 0.3);
     background: rgba(255, 255, 255, 0.15);
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur();
+    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
+        backdrop-filter: blur(10px);
     color: #fff;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (min-width: 1201px) {
+
+}
+@media (max-width: 1200px) {
+
 }
