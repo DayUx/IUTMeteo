@@ -36,14 +36,17 @@ function search() {
     fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?q=${searchId},fr&units=metric&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
         response => response.json()).then(
         data => {
-            document.getElementById("ville").innerHTML = data.city.name;
-            document.getElementById("pays").innerHTML = data.city.country;
-            document.getElementById("search-result-meteo").innerHTML="";
-            for (let i = 0; i < data.list.length; i++) {
-                createElem(data.list[i], i, data.list);
+            if (data.city !== undefined){
+                document.getElementById("ville").innerHTML = data.city.name;
+                document.getElementById("pays").innerHTML = data.city.country;
+                document.getElementById("search-result-meteo").innerHTML="";
+                for (let i = 0; i < data.list.length; i++) {
+                    createElem(data.list[i], i, data.list);
+                }
+                console.log(data);
+            } else {
+                document.getElementById("ville").innerHTML = "La ville n'est pas disponible à la recherche"
             }
-            console.log(data);
-
         })
 }
 
