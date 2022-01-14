@@ -19,7 +19,7 @@ function createElem(obj, idx, tab) {
     vent.appendChild(ventSpeed);
 
 
-    humiditeIcon.src = "./img/water.png";
+    humiditeIcon.src = "./img/water.svg";
     var humiditeVal = document.createElement("h2");
     humiditeVal.innerHTML = obj.humidity + " %";
     humidite.appendChild(humiditeIcon);
