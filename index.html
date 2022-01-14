@@ -18,12 +18,12 @@
     <a href="aide">Aide</a>
     </span>
 </nav>
-<div class="search-div"><input id="search">
-    <button onclick="search()">Rechercher</button>
+<div class="search-div"><div class="search-container"><input id="search"><ul id="search-list"></ul></div>
+    <button onclick="load()">Rechercher</button>
 </div>
 <div id="search-result">
     <info><h1 id="ville"></h1>
-        <h1 id="pays"></h1></info>
+        <img id="pays"></img></info>
     <div id="search-result-meteo"></div>
 
 </div>

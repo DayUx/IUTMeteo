@@ -1,11 +1,11 @@
-body{
+body {
     padding: 0 0 200px 0;
     margin: 0;
     width: 100%;
     height: 100%;
     font-family: Calibri;
-    background: rgb(0,114,139);
-    background: linear-gradient(180deg, rgba(0,114,139,1) 0%, rgba(1,140,164,1) 47%, rgba(61,201,193,1) 100%);
+    background: rgb(0, 114, 139);
+    background: linear-gradient(180deg, rgba(0, 114, 139, 1) 0%, rgba(1, 140, 164, 1) 47%, rgba(61, 201, 193, 1) 100%);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
@@ -18,7 +18,7 @@ body:after {
     content: " ";
     height: 100%;
     left: 0;
-    opacity: 1 ;
+    opacity: 1;
     pointer-events: none;
     position: fixed;
     right: 0;
@@ -34,7 +34,7 @@ body:before {
     content: " ";
     height: 100%;
     left: 0;
-    opacity: 1 ;
+    opacity: 1;
     pointer-events: none;
     position: fixed;
     right: 0;
@@ -43,26 +43,27 @@ body:before {
     z-index: 101;
 }
 
-nav{
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    background: rgba(255, 255, 255, 0.15);
+    background: #2da0af;
     border-radius: 5px;
     backdrop-filter: blur(10px);
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px rgba(255, 255, 255, .3);
     margin: 5px;
 
 }
 
-nav span{
+nav span {
     width: 300px;
     display: flex;
     justify-content: space-around;
     font-family: Calibri;
 }
-nav h1{
+
+nav h1 {
     color: #fff;
     font-size: 30px;
     margin: 15px 0 15px 10px;
@@ -76,36 +77,102 @@ nav a {
     transition: 0.1s ease-in-out;
 }
 
-nav a:hover{
+nav a:hover {
     color: #fff;
 }
 
-.search-div{
+.search-div {
     width: 75%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin:100px auto;
+    margin: 100px auto;
 }
-.search-div input{
-    flex: max-content;
+
+.search-div input {
+    flex: 1;
     height: 60px;
     border-radius: 100px;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
+    background: #2da0af;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px rgba(255, 255, 255, .3);
     color: #fff;
     font-size: 20px;
     padding: 0 20px 0 20px;
     outline: none;
+    z-index: 11;
+}
+
+.search-div .search-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+}
+
+.search-div .search-container ul {
+    display: none;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    position: absolute;
+    height: fit-content;
+    background: #2da0af;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px rgb(83, 166, 183);
+    border-right: 2px solid rgba(255, 255, 255, 0.3);
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    bottom: 50%;
+    transform: translateY(calc(100%));
+    box-sizing: border-box;
+    z-index: 10;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 5px 5px 5px;
+}
+
+.search-div .search-container ul.toggle {
+    display: flex;
+}
+
+.search-div .search-container ul img {
+    height: 20px;
+    margin-left: 20px;
+}
+
+
+.search-div .search-container ul span {
+    background: #2da0af;
+    backdrop-filter: blur(10px);
+    box-shadow:  inset 0 0 100px rgb(93, 177, 196);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.search-div .search-container ul span:hover {
+    cursor: pointer;
+    background: rgb(96, 180, 197);
+}
+
+.search-div .search-container ul span h3{
+    margin: 0;
+    color: #fff;
+
 }
 .search-div button {
     border-radius: 100px;
     border: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
+    background: #2da0af;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px rgba(255, 255, 255, .3);
     color: #fff;
     height: 60px;
     padding: 0 40px 0 40px;
@@ -114,47 +181,67 @@ nav a:hover{
     margin-left: 20px;
 
 }
-button:hover{
+
+button:hover {
     cursor: pointer;
 }
 
 .search-div button:hover {
     border: 2px solid rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.20);
+    background: #5ab9c5;
 }
 
-#search-result{
+#search-result {
     margin: auto;
-    border-radius:15px;
+    border-radius: 15px;
     /*border: 2px solid rgba(255, 255, 255, 0.3);*/
-    background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
+    background: #2da0af;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px rgba(255, 255, 255, .3);
     color: #fff;
     width: 75%;
     padding: 20px;
     box-sizing: border-box;
 }
 
-.meteo-journee{
+#search-result #ville {
+    font-size: 70px;
+    margin: 0;
+
+}
+
+#search-result info {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    align-content: center;
+
+}
+
+#search-result #pays {
+    width: 50px;
+    margin-left: 20px;
+}
+
+.meteo-journee {
     flex: none;
     width: 300px;
     background: red;
-    background: rgba(255, 255, 255, 0.15);
+    background: #2da0af;
     backdrop-filter: blur(10px);
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
-    border-radius:15px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px rgba(255, 255, 255, .3);
+    border-radius: 15px;
     margin-right: 20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /*justify-content: center;*/
+    /*align-items: center;*/
     flex-direction: column;
     padding: 20px;
     box-sizing: border-box;
 }
 
 
-.meteo-journee p{
+.meteo-journee p {
     padding: 0;
     margin: 0;
     text-align: center;
@@ -163,11 +250,12 @@ button:hover{
 }
 
 
-.meteo-journee img{
-    margin: -30px 0;
+.meteo-journee img {
+    margin: -30px auto;
     width: 75%;
 }
-#search-result-meteo{
+
+#search-result-meteo {
     flex: none;
     display: flex;
     overflow: auto;
@@ -177,66 +265,61 @@ button:hover{
 }
 
 
-.temp{
+.temp {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    margin: auto;
     /*align-items: center;*/
 }
 
-.temp h1{
+.temp h1 {
     margin: 0 5px;
 
 
 }
-.tempmin{
+
+.tempmin {
     opacity: 0.7;
     font-size: 28px;
 }
-.tempmax{
+
+.tempmax {
     font-size: 50px;
 }
 
 
-
-
-
-
-#search-result-meteo::-webkit-scrollbar-track
-{
+#search-result-meteo::-webkit-scrollbar-track {
     display: none;
 }
 
 
-
-#search-result-meteo::-webkit-scrollbar
-{
+#search-result-meteo::-webkit-scrollbar {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 100px;
 }
-#search-result-meteo::-webkit-scrollbar-thumb
-{
+
+#search-result-meteo::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 100px;
 }
 
 
-#search-result-meteo::-webkit-scrollbar-thumb:hover
-{
+#search-result-meteo::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 100px;
 }
 
 
-footer{
+footer {
     position: absolute;
     float: bottom;
     bottom: 0;
     height: 100px;
     border-top: 2px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow:0 0  10px 0 rgba(0, 0, 0, 0.2),inset 0 0 100px rgba(255, 255, 255, .3);
-        backdrop-filter: blur(10px);
+    background: #2da0af;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), inset 0 0 100px rgba(255, 255, 255, .3);
+    backdrop-filter: blur(10px);
     color: #fff;
     width: 100%;
     display: flex;
@@ -244,9 +327,43 @@ footer{
     align-items: center;
 }
 
+.humidite {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.humidite h2 {
+    margin: 0;
+}
+
+.vent {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: baseline;
+    width: 75%;
+    margin: auto;
+}
+
+
+.vent h1 {
+    font-weight: bolder;
+    margin: 0 10px 0 0;
+}
+
+.humidite img {
+    width: 30px;
+    margin: 0 10px 0 0;
+}
+
 @media (min-width: 1201px) {
 
 }
+
 @media (max-width: 1200px) {
 
 }
