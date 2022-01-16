@@ -60,7 +60,7 @@ function createElem(obj, idx, tab) {
     div.onclick = function () {
         var list = document.getElementsByClassName("meteo-journee");
         for (var i = 0; i < list.length; i++) {
-            if (list[i]!=newDiv) {
+            if (list[i] != newDiv) {
                 list[i].classList.remove("extend");
             }
         }
@@ -79,13 +79,16 @@ function createElem(obj, idx, tab) {
     newDiv.appendChild(divextend);
 // newDiv.appendChild(humidite)
 // newDiv.appendChild(vent);
+    if (idx == 0) {
+        newDiv.classList.add("extend");
+        loadInfo(obj);
+    }
     divRes.appendChild(newDiv);
 }
 
 
-function loadInfo(data){
+function loadInfo(data) {
     console.log(data);
-
 
 
     obj = data;
@@ -106,6 +109,8 @@ function loadInfo(data){
     var tempMin = document.createElement("h1");
     var icon = document.createElement("img");
     var temps = document.createElement("div");
+    var description = document.createElement("p");
+    description.classList.add("trn");
     ventDir.innerHTML = getCardinalDirection(obj.deg);
 
     ventSpeed.innerHTML = obj.speed + " m/s";
@@ -113,6 +118,8 @@ function loadInfo(data){
     vent.appendChild(ventSpeed);
     humiditeIcon.src = "./img/water.svg";
     humiditeVal.innerHTML = obj.humidity + " %";
+    humidite.classList.add("humidite");
+    vent.classList.add("vent");
     humidite.appendChild(humiditeIcon);
     humidite.appendChild(humiditeVal);
     tempMax.innerHTML = Math.round(obj.temp.max) + "°C";
@@ -122,21 +129,16 @@ function loadInfo(data){
     temp.appendChild(tempMax);
     temp.appendChild(tempMin);
     temps.id = "temps";
-
+    description.innerHTML = obj.weather[0].description;
     temps.appendChild(icon);
     temps.appendChild(temp);
-
-
+    newDiv.classList.add("search-result-info-content");
     newDiv.appendChild(temps);
-
     newDiv.appendChild(humidite)
     newDiv.appendChild(vent);
     divRes.appendChild(newDiv);
     divRes.appendChild(newDiv2);
-
-
-
-
+    divRes.appendChild(description);
 }
 
 function getCardinalDirection(angle) {
@@ -154,6 +156,7 @@ function search(search) {
                 document.getElementById("ville").innerHTML = data.city.name;
                 document.getElementById("pays").src = "https://countryflagsapi.com/png/" + data.city.country;
                 document.getElementById("search-result-meteo").innerHTML = "";
+
                 for (let i = 0; i < data.list.length; i++) {
                     createElem(data.list[i], i, data.list);
                 }
