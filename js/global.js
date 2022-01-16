@@ -41,11 +41,34 @@ function createElem(obj, idx, tab) {
     newDiv.classList.add("meteo-journee");
     temp.appendChild(tempMax);
     temp.appendChild(tempMin);
-    newDiv.appendChild(temp);
-    newDiv.appendChild(icon);
-    newDiv.appendChild(humidite)
-    newDiv.appendChild(vent);
-    newDiv.appendChild(date);
+
+
+    var div = document.createElement("div");
+    div.classList.add("meteo-journee-content");
+
+
+    var temps = document.createElement("div");
+    temps.id="temps";
+
+    var divextend = document.createElement("div");
+    divextend.classList.add("meteo-journee-extend");
+
+    div.onclick = function () {
+        newDiv.classList.toggle("extend");
+    };
+
+
+    divextend.appendChild(vent);
+    divextend.appendChild(humidite);
+temps.appendChild(icon);
+temps.appendChild(temp);
+    div.appendChild(date);
+div.appendChild(temps);
+    newDiv.appendChild(div);
+    newDiv.appendChild(divextend);
+// newDiv.appendChild(humidite)
+// newDiv.appendChild(vent);
+
     divRes.appendChild(newDiv);
 }
 
@@ -71,9 +94,11 @@ function search(search) {
             }
         })
 }
+
 document.body.addEventListener('click', function () {
     document.getElementById("search-list").classList.remove("toggle");
 }, true);
+
 function load() {
     // https://openweathermap.org/data/2.5/find?q=boston&appid=ee07e2bf337034f905cde0bdedae3db8&units=metric
     var search = document.getElementById('search').value;
@@ -117,6 +142,15 @@ function position(position) {
             }
             console.log(data);
         })
+}
+
+function burgerMenu() {
+    let nav = document.getElementById("menu");
+    nav.classList.toggle("toggle");
+    document.getElementById("header-burger").classList.toggle("toggle");
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    document.body.classList.toggle("toggle");
 }
 
 if (navigator.geolocation)

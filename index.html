@@ -11,18 +11,26 @@
 <body>
 <nav>
     <h1>METEO</h1>
-    <span>
+    <button onclick="burgerMenu()" id="header-burger" class="header-btn header-burger"></button>
+    <span id="menu">
     <a href="#">Accueil</a>
     <a href="contact">Contact</a>
     <a href="aide">Aide</a>
     </span>
 </nav>
-<div class="search-div"><div class="search-container"><input id="search"><ul id="search-list"></ul></div>
-    <button onclick="load()">Rechercher</button>
+
+<div class="top-container">
+    <info><img id="pays">
+    <h1 id="ville"></h1></info>
+    <div class="search-div">
+        <div class="search-container"><input id="search">
+            <ul id="search-list"></ul>
+        </div>
+        <button onclick="load()"></button>
+    </div>
 </div>
 <div id="search-result">
-    <info><h1 id="ville"></h1>
-        <img id="pays"></img></info>
+
     <div id="search-result-meteo"></div>
 
 </div>
