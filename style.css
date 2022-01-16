@@ -44,6 +44,15 @@ body:before {
     z-index: 101;
 }
 
+
+#search-result-info{
+    width: 100%;
+    background: #0a68a0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 nav {
     display: flex;
     flex-direction: row;
@@ -143,6 +152,11 @@ button:hover {
     display: flex;
 }
 
+
+
+
+
+
 .search-div .search-container ul {
     border-top: solid 1px rgba(255, 255, 255, 0.18);
     display: none;
@@ -218,23 +232,29 @@ button:hover {
         justify-content: space-between;
         align-items: center;
         box-sizing: border-box;
-        background: #0575ae;
         font-size: 14px;
-        margin: 0 2px;
         flex: 1;
     }
 
     .meteo-journee{
         flex: 1;
+        background: #0575ae;
+        margin: 0 2px;
+        transition: 0.1s;
+    }
+    .meteo-journee:hover{
+        cursor: pointer;
+        background: #056fa4;
     }
     .meteo-journee-extend{
         display: none;
     }
 
-.meteo-journee-content:hover {
-        cursor: pointer;
-        background: #ffffff;
+    .meteo-journee.extend{
+        background: #0a68a0;
     }
+
+
     #search-result-meteo h1, #search-result-meteo h2 {
         margin: 0;
     }

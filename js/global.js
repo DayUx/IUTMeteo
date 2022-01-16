@@ -1,5 +1,9 @@
 var jourSemaine = {0: "Dimanche", 1: "Lundi", 2: "Mardi", 3: "Mercredi", 4: "Jeudi", 5: "Vendredi", 6: "Samedi"};
 
+
+var DATA = {};
+
+
 function createElem(obj, idx, tab) {
     var divRes = document.getElementById("search-result-meteo");
     var newDiv = document.createElement("div");
@@ -48,28 +52,94 @@ function createElem(obj, idx, tab) {
 
 
     var temps = document.createElement("div");
-    temps.id="temps";
+    temps.id = "temps";
 
     var divextend = document.createElement("div");
     divextend.classList.add("meteo-journee-extend");
 
     div.onclick = function () {
+        var list = document.getElementsByClassName("meteo-journee");
+        for (var i = 0; i < list.length; i++) {
+            if (list[i]!=newDiv) {
+                list[i].classList.remove("extend");
+            }
+        }
         newDiv.classList.toggle("extend");
+        loadInfo(obj);
     };
-
+    newDiv.id = idx;
 
     divextend.appendChild(vent);
     divextend.appendChild(humidite);
-temps.appendChild(icon);
-temps.appendChild(temp);
+    temps.appendChild(icon);
+    temps.appendChild(temp);
     div.appendChild(date);
-div.appendChild(temps);
+    div.appendChild(temps);
     newDiv.appendChild(div);
     newDiv.appendChild(divextend);
 // newDiv.appendChild(humidite)
 // newDiv.appendChild(vent);
-
     divRes.appendChild(newDiv);
+}
+
+
+function loadInfo(data){
+    console.log(data);
+
+
+
+    obj = data;
+    var divRes = document.getElementById("search-result-info");
+    divRes.innerHTML = "";
+    var newDiv = document.createElement("div");
+    var newDiv2 = document.createElement("div");
+
+    var date = document.createElement("p");
+    var temp = document.createElement("div");
+    var humidite = document.createElement("div");
+    var humiditeIcon = document.createElement("img");
+    var vent = document.createElement("div");
+    var ventDir = document.createElement("h1");
+    var ventSpeed = document.createElement("h2");
+    var humiditeVal = document.createElement("h2");
+    var tempMax = document.createElement("h1");
+    var tempMin = document.createElement("h1");
+    var icon = document.createElement("img");
+    var temps = document.createElement("div");
+    ventDir.innerHTML = getCardinalDirection(obj.deg);
+
+    ventSpeed.innerHTML = obj.speed + " m/s";
+    vent.appendChild(ventDir);
+    vent.appendChild(ventSpeed);
+    humiditeIcon.src = "./img/water.svg";
+    humiditeVal.innerHTML = obj.humidity + " %";
+    humidite.appendChild(humiditeIcon);
+    humidite.appendChild(humiditeVal);
+    tempMax.innerHTML = Math.round(obj.temp.max) + "°C";
+    tempMin.innerHTML = Math.round(obj.temp.min) + "°C";
+    icon.src = "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@4x.png";
+    date.innerHTML = jourSemaine[new Date(obj.dt * 1000).getDay()] + " " + new Date(obj.dt * 1000).getDate();
+    temp.appendChild(tempMax);
+    temp.appendChild(tempMin);
+    temps.id = "temps";
+
+    temps.appendChild(icon);
+    temps.appendChild(temp);
+
+
+    newDiv.appendChild(temps);
+    newDiv.appendChild(date);
+
+
+
+    newDiv2.appendChild(humidite)
+    newDiv2.appendChild(vent);
+    divRes.appendChild(newDiv);
+    divRes.appendChild(newDiv2);
+
+
+
+
 }
 
 function getCardinalDirection(angle) {
@@ -82,6 +152,8 @@ function search(search) {
         response => response.json()).then(
         data => {
             if (data.city !== undefined) {
+                DATA = data;
+                console.log("data");
                 document.getElementById("ville").innerHTML = data.city.name;
                 document.getElementById("pays").src = "https://countryflagsapi.com/png/" + data.city.country;
                 document.getElementById("search-result-meteo").innerHTML = "";
