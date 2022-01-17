@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 body {
-    padding: 0 0 200px 0;
+    padding: 0 0 150px 0;
     margin: 0;
     width: 100%;
     height: 100%;
@@ -25,7 +25,7 @@ body:after {
     right: 0;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 10000;
 }
 
 body:before {
@@ -41,8 +41,34 @@ body:before {
     right: 0;
     top: 0;
     width: 100%;
-    z-index: 101;
+    z-index: 10001;
 }
+
+
+.leve:before {
+    content: "";
+    display: block;
+    font-size: 20px;
+    left: 100%;
+    position: absolute;
+    color: #fff;
+    white-space: pre;
+    font-weight: lighter;
+    top: 50%;
+    transform: translateY(-50%);
+} .couche:before {
+    font-weight: lighter;
+      content: "";
+      display: block;
+      font-size: 20px;
+      left: 100%;
+      position: absolute;
+      color: #fff;
+      white-space: pre;
+      top: 50%;
+      transform: translateY(-50%);
+  }
+
 
 footer{
     height: 100px;
@@ -202,6 +228,8 @@ nav h1 {
     align-items: center;
     justify-content: space-between;
     height: 50px;
+    width: 300px;
+
 
 }
 
@@ -241,6 +269,7 @@ info h1 {
     padding: 10px;
     box-sizing: border-box;
     color: #fff;
+    width: 100%;
 
 }
 
@@ -294,15 +323,33 @@ button:hover {
     height: 10px;
     margin-left: 20px;
 }
+.search-div .search-container ul #temps img {
+    height: 100%;
+    margin-left: 20px;
+}
+.search-div .search-container ul #temps{
+    margin-left: auto;
+}
 
 
 .search-div .search-container ul span {
     color: #fff;
     padding: 10px;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     flex-direction: row;
     font-size: 10px;
+    height: 50px;
+}
+.search-div .search-container ul .temp {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: end;
+    min-width: 40px;
+}
+.search-div .search-container ul .temp h1 {
+    font-size: 15px !important;
 }
 
 .search-div .search-container ul span:hover {
@@ -313,10 +360,32 @@ button:hover {
 .search-div .search-container ul span h3 {
     margin: 0;
     color: #fff;
-
+    font-size: 15px;
+    font-weight: lighter;
 }
 
 @media (min-width: 501px) {
+    .leve{
+        background: url("img/leve.svg") no-repeat center;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        margin-right: 150px;
+    }
+    .couche{
+        background: url("img/couche.svg") no-repeat center;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        margin-right: 150px;
+
+    }
+    .couche-leve{
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        margin-left: 75px;
+    }
     .top-container {
         display: flex;
         flex-direction: row;
@@ -343,6 +412,7 @@ button:hover {
         display: flex;
         flex-direction: row;
         height: 60px;
+
     }
 
     #search-result-meteo .meteo-journee .meteo-journee-content {
@@ -410,7 +480,7 @@ button:hover {
         display: flex;
         flex-direction: column;
 
-        height: 100%;
+        height: fit-content;
         align-items: end;
     }
 
@@ -420,6 +490,27 @@ button:hover {
 
 @media (max-width: 500px) {
 
+    .leve{
+        background: url("img/leve.svg") no-repeat center;
+        width: 75px;
+        height: 75px;
+        position: relative;
+        margin-right: 75px;
+    }
+    .couche{
+        background: url("img/couche.svg") no-repeat center;
+        width: 75px;
+        height: 75px;
+        position: relative;
+        margin-right: 75px;
+
+    }
+    .couche-leve{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .top-container {
         display: flex;
@@ -507,12 +598,34 @@ button:hover {
     }
 
 
+
+
     .meteo-journee.extend .meteo-journee-extend {
-        height: 200px;
+        height: 300px;
         opacity: 1;
 
     }
 
+    .meteo-journee-extend-content{
+        flex: 1;
+        overflow: hidden;
+        transition: 0.5s;
+        display: flex;
+        flex-direction: row;
+        box-sizing: border-box;
+        width: fit-content;
+        margin: auto;
+    }
+
+
+    .meteo-journee-extend p {
+        margin:20px auto;
+        font-size: 25px;
+        color: #fff;
+        text-transform: capitalize;
+        font-weight: lighter;
+
+    }
     .meteo-journee-extend {
         height: 0;
         opacity: 0;
@@ -520,7 +633,7 @@ button:hover {
         overflow: hidden;
         transition: 0.5s;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         box-sizing: border-box;
         width: fit-content;
         margin: auto;
@@ -623,19 +736,13 @@ button:hover {
     .meteo-journee .temp {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: fit-content;
         align-items: end;
+        min-width: 40px;
     }
 
     .header-burger::before {
     }
+
 }
 
-@keyframes accordion {
-    from {
-        height: 0;
-    }
-    to {
-        height: 100%;
-    }
-}

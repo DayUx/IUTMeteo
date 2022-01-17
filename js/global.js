@@ -69,8 +69,39 @@ function createElem(obj, idx, tab) {
     };
     newDiv.id = idx;
 
-    divextend.appendChild(vent);
-    divextend.appendChild(humidite);
+    var description = document.createElement("p");
+    var coucheLever = document.createElement("div");
+    var couche = document.createElement("div");
+    var leve = document.createElement("div");
+    description.innerHTML = obj.weather[0].description;
+
+    couche.classList.add("couche");
+    leve.classList.add("leve");
+    leve.before("test");
+    coucheLever.appendChild(couche);
+    coucheLever.appendChild(leve);
+    coucheLever.classList.add("couche-leve");
+
+
+
+
+    var divextendcontent = document.createElement("div");
+    divextendcontent.classList.add("meteo-journee-extend-content");
+    divextendcontent.appendChild(vent);
+    divextendcontent.appendChild(humidite);
+
+    divextend.appendChild(divextendcontent);
+    // divextend.appendChild(vent);
+    // divextend.appendChild(humidite);
+    divextend.appendChild(coucheLever);
+    divextend.appendChild(description);
+    var styleElement = document.createElement("style");
+    styleElement.innerHTML = ".leve::before{content: \"Lever \\00000a "+ new Date(obj.sunrise * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}.couche::before{content: \"Coucher \\00000a"+ new Date(obj.sunset * 1000).getUTCHours()+ "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}";
+    divextend.appendChild(styleElement);
+
+
+
+
     temps.appendChild(icon);
     temps.appendChild(temp);
     div.appendChild(date);
@@ -110,7 +141,15 @@ function loadInfo(data) {
     var icon = document.createElement("img");
     var temps = document.createElement("div");
     var description = document.createElement("p");
-    description.classList.add("trn");
+    var coucheLever = document.createElement("div");
+    var couche = document.createElement("div");
+    var leve = document.createElement("div");
+
+    couche.classList.add("couche");
+    leve.classList.add("leve");
+    leve.before("test");
+    coucheLever.appendChild(couche);
+    coucheLever.appendChild(leve);
     ventDir.innerHTML = getCardinalDirection(obj.deg);
 
     ventSpeed.innerHTML = obj.speed + " m/s";
@@ -129,16 +168,22 @@ function loadInfo(data) {
     temp.appendChild(tempMax);
     temp.appendChild(tempMin);
     temps.id = "temps";
+    coucheLever.classList.add("couche-leve");
     description.innerHTML = obj.weather[0].description;
     temps.appendChild(icon);
     temps.appendChild(temp);
-    newDiv.classList.add("search-result-info-content");
     newDiv.appendChild(temps);
+    newDiv.classList.add("search-result-info-content");
+
     newDiv.appendChild(humidite)
     newDiv.appendChild(vent);
     divRes.appendChild(newDiv);
     divRes.appendChild(newDiv2);
+    divRes.appendChild(coucheLever);
     divRes.appendChild(description);
+    var styleElement = document.createElement("style");
+    styleElement.innerHTML = ".leve::before{content: \"Lever \\00000a "+ new Date(obj.sunrise * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}.couche::before{content: \"Coucher \\00000a"+ new Date(obj.sunset * 1000).getUTCHours()+ "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}";
+divRes.appendChild(styleElement);
 }
 
 function getCardinalDirection(angle) {
@@ -201,6 +246,27 @@ function createSearchList(obj, idx, tab) {
     span.appendChild(titre);
     span.appendChild(img);
     document.getElementById("search-list").appendChild(span);
+
+
+    var tempMax = document.createElement("h1");
+    tempMax.classList.add("tempmax")
+    var tempMin = document.createElement("h1");
+    tempMin.classList.add("tempmin")
+    var icon = document.createElement("img");
+    var temps = document.createElement("div");
+    var temp = document.createElement("div");
+    tempMax.innerHTML = Math.round(obj.main.temp_max + -273,15) + "°C";
+    tempMin.innerHTML = Math.round(obj.main.temp_min + -273,15) + "°C";
+    icon.src = "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@4x.png";
+
+    temp.appendChild(tempMax);
+    temp.appendChild(tempMin);
+    temp.classList.add("temp");
+    temps.id = "temps";
+
+    temps.appendChild(icon);
+    temps.appendChild(temp);
+    span.appendChild(temps);
 }
 
 function position(position) {
