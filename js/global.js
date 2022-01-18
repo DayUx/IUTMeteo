@@ -200,7 +200,7 @@ function getCardinalDirection(angle) {
 }
 
 function search(search) {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${search.lat}&lon=${search.lon}&units=metric&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
+    fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${search.lat}&lon=${search.lon}&units=metric&lang=fr&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
         response => response.json()).then(
         data => {
             if (data.city !== undefined) {
@@ -278,7 +278,7 @@ function createSearchList(obj, idx, tab) {
 }
 
 function position(position) {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
+    fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&lang=fr&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
         response => response.json()).then(
         data => {
             document.getElementById("ville").innerHTML = data.city.name;
