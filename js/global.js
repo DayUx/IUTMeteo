@@ -290,6 +290,16 @@ function position(position) {
         })
 }
 
+
+
+
+document.getElementById("search").onkeypress = function (e) {
+    if (e.keyCode == 13) {
+        load();
+    }
+}
+
+
 function burgerMenu() {
     let nav = document.getElementById("menu");
     nav.classList.toggle("toggle");
