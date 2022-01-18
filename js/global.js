@@ -87,7 +87,10 @@ function createElem(obj, idx, tab) {
 
     var divextendcontent = document.createElement("div");
     divextendcontent.classList.add("meteo-journee-extend-content");
+    var delimiter = document.createElement("div");
+    delimiter.classList.add("delimiter");
     divextendcontent.appendChild(vent);
+    divextendcontent.appendChild(delimiter);
     divextendcontent.appendChild(humidite);
 
     divextend.appendChild(divextendcontent);
@@ -163,6 +166,10 @@ function loadInfo(data) {
     humidite.appendChild(humiditeVal);
     tempMax.innerHTML = Math.round(obj.temp.max) + "°C";
     tempMin.innerHTML = Math.round(obj.temp.min) + "°C";
+    var delimiter = document.createElement("div");
+    delimiter.classList.add("delimiter");
+    var delimiter2 = document.createElement("div");
+    delimiter2.classList.add("delimiter");
     icon.src = "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@4x.png";
     date.innerHTML = jourSemaine[new Date(obj.dt * 1000).getDay()] + " " + new Date(obj.dt * 1000).getDate();
     temp.appendChild(tempMax);
@@ -174,8 +181,9 @@ function loadInfo(data) {
     temps.appendChild(temp);
     newDiv.appendChild(temps);
     newDiv.classList.add("search-result-info-content");
-
+    newDiv.appendChild(delimiter);
     newDiv.appendChild(humidite)
+    newDiv.appendChild(delimiter2);
     newDiv.appendChild(vent);
     divRes.appendChild(newDiv);
     divRes.appendChild(newDiv2);

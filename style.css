@@ -88,6 +88,8 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 50px 0;
+    box-sizing: border-box;
 }
 #search-result-info p{
     font-size: 40px;
@@ -105,12 +107,11 @@ footer{
     height: 200px;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
 }
 
 #search-result-info .humidite {
-    margin-right: 50px;
     position: relative;
     height: 100%;
     display: flex;
@@ -141,9 +142,6 @@ footer{
     position: relative;
 }
 
-#search-result-info #temps {
-    margin-right: 50px;
-}
 
 
 #temps h1 {
@@ -174,29 +172,17 @@ footer{
 }
 
 
-#search-result-info .humidite:before {
-    content: "";
-    font-size: 20px;
+
+.delimiter{
     color: #fff;
-    position: absolute;
     width: 2px;
     height: 100%;
     background: rgb(255, 255, 255);
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 90%);
-    left: calc(100% + 24px);
 }
 
-#search-result-info #temps:before {
-    content: "";
-    font-size: 20px;
-    color: #fff;
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background: rgb(255, 255, 255);
-    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 90%);
-    left: calc(100% + 24px);
-}
+
+
 
 #search-result-info:nth-child(2) {
     margin-right: 40px
@@ -217,9 +203,7 @@ nav a {
     color: #fff;
 }
 
-nav h1 {
-    margin: 0 0 0 20px;
-}
+
 
 
 .search-div {
@@ -363,6 +347,11 @@ button:hover {
     font-size: 15px;
     font-weight: lighter;
 }
+nav img {
+    height: 80%;
+    margin: 0 0 0 10px;
+
+}
 
 @media (min-width: 501px) {
     .leve{
@@ -485,6 +474,24 @@ button:hover {
     }
 
 
+}
+@media (max-width: 1100px) {
+    .meteo-journee-content #temps img{
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .meteo-journee-content #temps{
+        display: none;
+    }
+
+    .search-result-info-content{
+        height: 100px;
+    }
+    .search-result-info-content h1,.search-result-info-content h2{
+        font-size: 25px !important;
+    }
 }
 
 
@@ -613,8 +620,9 @@ button:hover {
         display: flex;
         flex-direction: row;
         box-sizing: border-box;
-        width: fit-content;
+        width: 100%;
         margin: auto;
+        justify-content: space-evenly;
     }
 
 
@@ -650,20 +658,10 @@ button:hover {
         font-size: 20px;
         color: #fff;
         position: relative;
-        margin-right: 20px;
     }
 
-    .meteo-journee-extend .vent:before {
-        content: "";
-        font-size: 20px;
-        color: #fff;
-        position: absolute;
-        width: 2px;
-        height: 200px;
-        background: rgb(255, 255, 255);
-        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%);
-        left: calc(100% + 12px);
-    }
+
+
 
 
     .meteo-journee-extend .vent h1, .meteo-journee-extend .vent h2 {
