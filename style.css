@@ -489,6 +489,9 @@ nav img {
     .search-result-info-content{
         height: 100px;
     }
+    .search-result-info-content #temps img{
+        height: 100px;
+    }
     .search-result-info-content h1,.search-result-info-content h2{
         font-size: 25px !important;
     }
