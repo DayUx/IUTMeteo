@@ -56,21 +56,23 @@ body:before {
     font-weight: lighter;
     top: 50%;
     transform: translateY(-50%);
-} .couche:before {
+}
+
+.couche:before {
     font-weight: lighter;
-      content: "";
-      display: block;
-      font-size: 20px;
-      left: 100%;
-      position: absolute;
-      color: #fff;
-      white-space: pre;
-      top: 50%;
-      transform: translateY(-50%);
-  }
+    content: "";
+    display: block;
+    font-size: 20px;
+    left: 100%;
+    position: absolute;
+    color: #fff;
+    white-space: pre;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 
-footer{
+footer {
     height: 100px;
     background: #434343;
     color: #fff;
@@ -81,6 +83,7 @@ footer{
     align-items: center;
     display: flex;
 }
+
 #search-result-info {
     width: 100%;
     background: #0a68a0;
@@ -91,7 +94,8 @@ footer{
     padding: 50px 0;
     box-sizing: border-box;
 }
-#search-result-info p{
+
+#search-result-info p {
     font-size: 40px;
     margin: 10px;
     padding: 0;
@@ -100,6 +104,7 @@ footer{
     font-weight: lighter;
     letter-spacing: 2px;
 }
+
 .search-result-info-content {
     width: 100%;
     background: #0a68a0;
@@ -143,7 +148,6 @@ footer{
 }
 
 
-
 #temps h1 {
     font-size: 40px;
     font-weight: lighter;
@@ -165,6 +169,7 @@ footer{
     font-weight: lighter;
     margin: 0;
 }
+
 #search-result-info .vent h2 {
     font-size: 40px;
     font-weight: lighter;
@@ -172,16 +177,13 @@ footer{
 }
 
 
-
-.delimiter{
+.delimiter {
     color: #fff;
     width: 2px;
     height: 100%;
     background: rgb(255, 255, 255);
     background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 90%);
 }
-
-
 
 
 #search-result-info:nth-child(2) {
@@ -202,8 +204,6 @@ nav a {
     text-decoration: none;
     color: #fff;
 }
-
-
 
 
 .search-div {
@@ -307,11 +307,13 @@ button:hover {
     height: 10px;
     margin-left: 20px;
 }
+
 .search-div .search-container ul #temps img {
     height: 100%;
     margin-left: 20px;
 }
-.search-div .search-container ul #temps{
+
+.search-div .search-container ul #temps {
     margin-left: auto;
 }
 
@@ -325,6 +327,7 @@ button:hover {
     font-size: 10px;
     height: 50px;
 }
+
 .search-div .search-container ul .temp {
     display: flex;
     flex-direction: column;
@@ -332,6 +335,7 @@ button:hover {
     align-items: end;
     min-width: 40px;
 }
+
 .search-div .search-container ul .temp h1 {
     font-size: 15px !important;
 }
@@ -347,6 +351,7 @@ button:hover {
     font-size: 15px;
     font-weight: lighter;
 }
+
 nav img {
     height: 80%;
     margin: 0 0 0 10px;
@@ -354,14 +359,15 @@ nav img {
 }
 
 @media (min-width: 501px) {
-    .leve{
+    .leve {
         background: url("img/leve.svg") no-repeat center;
         width: 100px;
         height: 100px;
         position: relative;
         margin-right: 150px;
     }
-    .couche{
+
+    .couche {
         background: url("img/couche.svg") no-repeat center;
         width: 100px;
         height: 100px;
@@ -369,12 +375,14 @@ nav img {
         margin-right: 150px;
 
     }
-    .couche-leve{
+
+    .couche-leve {
         height: 100px;
         display: flex;
         justify-content: center;
         margin-left: 75px;
     }
+
     .top-container {
         display: flex;
         flex-direction: row;
@@ -475,39 +483,50 @@ nav img {
 
 
 }
+
 @media (max-width: 1100px) {
-    .meteo-journee-content #temps img{
+    .meteo-journee-content #temps img {
         display: none;
     }
 }
 
 @media (max-width: 700px) {
-    .meteo-journee-content #temps{
+    .meteo-journee-content #temps {
         display: none;
     }
 
-    .search-result-info-content{
+    .search-result-info-content {
         height: 100px;
     }
-    .search-result-info-content #temps img{
+
+    .search-result-info-content #temps img {
         height: 100px;
     }
-    .search-result-info-content h1,.search-result-info-content h2{
+
+    .search-result-info-content h1, .search-result-info-content h2 {
         font-size: 25px !important;
     }
 }
 
 
 @media (max-width: 500px) {
+    .meteo-journee-content #temps {
+        display: flex !important;
+    }
 
-    .leve{
+    .meteo-journee-content #temps img {
+      display: block !important;
+    }
+
+    .leve {
         background: url("img/leve.svg") no-repeat center;
         width: 75px;
         height: 75px;
         position: relative;
         margin-right: 75px;
     }
-    .couche{
+
+    .couche {
         background: url("img/couche.svg") no-repeat center;
         width: 75px;
         height: 75px;
@@ -515,7 +534,8 @@ nav img {
         margin-right: 75px;
 
     }
-    .couche-leve{
+
+    .couche-leve {
         flex: 1;
         display: flex;
         align-items: center;
@@ -608,15 +628,13 @@ nav img {
     }
 
 
-
-
     .meteo-journee.extend .meteo-journee-extend {
         height: 300px;
         opacity: 1;
 
     }
 
-    .meteo-journee-extend-content{
+    .meteo-journee-extend-content {
         flex: 1;
         overflow: hidden;
         transition: 0.5s;
@@ -630,13 +648,14 @@ nav img {
 
 
     .meteo-journee-extend p {
-        margin:20px auto;
+        margin: 20px auto;
         font-size: 25px;
         color: #fff;
         text-transform: capitalize;
         font-weight: lighter;
 
     }
+
     .meteo-journee-extend {
         height: 0;
         opacity: 0;
@@ -662,9 +681,6 @@ nav img {
         color: #fff;
         position: relative;
     }
-
-
-
 
 
     .meteo-journee-extend .vent h1, .meteo-journee-extend .vent h2 {
