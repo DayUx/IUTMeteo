@@ -274,6 +274,8 @@ function createSearchList(obj, idx, tab) {
     var titre = document.createElement("h3");
     titre.innerHTML = obj.name;
     var img = document.createElement("img");
+
+
     img.src = "https://countryflagsapi.com/png/" + obj.sys.country;
     span.appendChild(titre);
     span.appendChild(img);
@@ -305,8 +307,19 @@ function position(position) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&lang=fr&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
         response => response.json()).then(
         data => {
-            document.getElementById("ville").innerHTML = data.city.name;
-            document.getElementById("pays").src = "https://countryflagsapi.com/png/" + data.city.country;
+
+
+            if (data.city.name == "") {
+                document.getElementById("ville").innerHTML = "Ville inconnue";
+            } else {
+                document.getElementById("ville").innerHTML = data.city.name;
+            }
+
+            if (data.city.country == "") {
+                document.getElementById("pays").src = "img/nodata.svg";
+            } else {
+                document.getElementById("pays").src = "https://countryflagsapi.com/png/" + data.city.country;
+            }
             document.getElementById("search-result-meteo").innerHTML = "";
 
             for (let i = 0; i < data.list.length; i++) {

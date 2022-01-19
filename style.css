@@ -511,7 +511,15 @@ nav img {
         width: 100% !important;
     }
 }
-
+p.info{
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+    padding: 50px;
+    text-align: center;
+    font-weight: lighter;
+    text-align: justify;
+}
 @media (max-width: 700px) {
 
 
