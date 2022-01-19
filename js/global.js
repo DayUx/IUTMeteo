@@ -166,6 +166,10 @@ function loadInfo(data) {
     vent.classList.add("vent");
     humidite.appendChild(humiditeIcon);
     humidite.appendChild(humiditeVal);
+    tempMax.classList.add("tempmax");
+    tempMin.classList.add("tempmin");
+
+
     tempMax.innerHTML = Math.round(obj.temp.max) + "°C";
     tempMin.innerHTML = Math.round(obj.temp.min) + "°C";
     var delimiter = document.createElement("div");
@@ -176,6 +180,7 @@ function loadInfo(data) {
     date.innerHTML = jourSemaine[new Date(obj.dt * 1000).getDay()] + " " + new Date(obj.dt * 1000).getDate();
     temp.appendChild(tempMax);
     temp.appendChild(tempMin);
+    temp.classList.add("temp");
     temps.id = "temps";
     coucheLever.classList.add("couche-leve");
     description.innerHTML = obj.weather[0].description;
