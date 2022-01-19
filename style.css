@@ -27,7 +27,9 @@ body:after {
     width: 100%;
     z-index: 10000;
 }
-
+body.toggle{
+    overflow: hidden;
+}
 body:before {
     background-image: url("./img/overlayLine.svg");
     background-size: 10px;
@@ -637,6 +639,9 @@ p.info{
         background-image: url("./img/hamburger.svg");
         background-size: cover;
         margin-right: 10px;
+    }
+    .header-burger:hover{
+        background-color: transparent !important;
     }
 
     .header-burger.toggle {
