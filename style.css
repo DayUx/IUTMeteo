@@ -302,7 +302,7 @@ button:hover {
 .search-div .search-container ul {
     border-top: solid 1px rgba(255, 255, 255, 0.18);
     display: none;
-    width: calc(100% + 50px);
+    width: calc(100% + 100px);
     margin: 0;
     left: 0;
     position: absolute;
