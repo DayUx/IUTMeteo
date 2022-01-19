@@ -1,5 +1,7 @@
-var jourSemaine = {0: "Dimanche", 1: "Lundi", 2: "Mardi", 3: "Mercredi", 4: "Jeudi", 5: "Vendredi", 6: "Samedi"};
 
+
+var jourSemaine = {0: "Dimanche", 1: "Lundi", 2: "Mardi", 3: "Mercredi", 4: "Jeudi", 5: "Vendredi", 6: "Samedi"};
+let latLong = {};
 
 var DATA = {};
 
@@ -127,7 +129,7 @@ function loadInfo(data) {
 
     obj = data;
     var divRes = document.getElementById("search-result-info");
-    divRes.innerHTML = "";
+    $(divRes).children().not(':first-child').remove();
     var newDiv = document.createElement("div");
     var newDiv2 = document.createElement("div");
 
@@ -200,6 +202,16 @@ function getCardinalDirection(angle) {
 }
 
 function search(search) {
+    var divRes = document.getElementById("search-result-info");
+    $(divRes).children().not(':first-child').remove();
+    console.log($("search-result-info").slice(1));
+
+    divRes.classList.add("loading");
+
+
+
+
+
     fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${search.lat}&lon=${search.lon}&units=metric&lang=fr&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
         response => response.json()).then(
         data => {
@@ -209,15 +221,15 @@ function search(search) {
                 document.getElementById("ville").innerHTML = data.city.name;
                 document.getElementById("pays").src = "https://countryflagsapi.com/png/" + data.city.country;
                 document.getElementById("search-result-meteo").innerHTML = "";
-
+                divRes.classList.remove("loading");
                 for (let i = 0; i < data.list.length; i++) {
                     createElem(data.list[i], i, data.list);
                 }
                 console.log(data);
-            } else {
-                document.getElementById("ville").innerHTML = "La ville n'est pas disponible à la recherche"
             }
-        })
+        }).catch(function () {
+        divRes.classList.remove("loading");
+    })
 }
 
 document.body.addEventListener('click', function () {
@@ -225,21 +237,28 @@ document.body.addEventListener('click', function () {
 }, true);
 
 function load() {
+    var recherche = document.getElementById("search-list");
+    $(recherche).children().not(':first-child').remove();
+    document.getElementById("search-list").classList.add("loading");
+
     // https://openweathermap.org/data/2.5/find?q=boston&appid=ee07e2bf337034f905cde0bdedae3db8&units=metric
     var search = document.getElementById('search').value;
     fetch("https://openweathermap.org/data/2.5/find?q=" + search + "&appid=439d4b804bc8187953eb36d2a8c26a02&units=metric").then(
         response => response.json()).then(
         data => {
+            $(recherche).children().not(':first-child').remove();
+            document.getElementById("search-list").classList.add("loading");
+
             console.log(data);
-            document.getElementById("search-list").innerHTML = "";
             for (let i = 0; i < data.list.length; i++) {
                 createSearchList(data.list[i], i, data.list);
             }
+            document.getElementById("search-list").classList.remove("loading");
             document.getElementById("search-list").classList.add("toggle");
-
-        });
+        }).catch(function (error) {
+        document.getElementById("search-list").classList.remove("loading");
+    });
 }
-
 function createSearchList(obj, idx, tab) {
     var span = document.createElement("span");
     span.onclick = function () {
@@ -283,6 +302,8 @@ function position(position) {
         data => {
             document.getElementById("ville").innerHTML = data.city.name;
             document.getElementById("pays").src = "https://countryflagsapi.com/png/" + data.city.country;
+            document.getElementById("search-result-meteo").innerHTML = "";
+
             for (let i = 0; i < data.list.length; i++) {
                 createElem(data.list[i], i, data.list);
             }
@@ -309,6 +330,37 @@ function burgerMenu() {
     document.body.classList.toggle("toggle");
 }
 
-if (navigator.geolocation)
+if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position);
+} else {
+    position({ coords: { latitude: 48.856614, longitude: 2.3522219 } });
+}
 
+
+function initMap() {
+    const myLatlng = { lat: -25.363, lng: 131.044 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: myLatlng,
+    });
+    google.maps.event.addListener(map, 'click', function(event) {
+        marker.setPosition(event.latLng);
+        latLong = event.latLng.toJSON();
+    });
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+
+}
+
+
+function valider(){
+    console.log(latLong);
+    document.getElementsByClassName("map-container")[0].classList.remove("toggle");
+    position({ coords: { latitude: latLong.lat, longitude: latLong.lng } });
+}
+
+function showMap() {
+    document.getElementsByClassName("map-container")[0].classList.toggle("toggle");
+}

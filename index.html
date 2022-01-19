@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="stylesheet" href="style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Meteo</title>
 </head>
 <body>
+<div class="map-container">
+    <button onclick="showMap()" class="close"></button>
+    <button onclick="valider()" class="valider"> Valider</button>
+
+    <div id="map"></div></div>
+
+
+
 <nav>
     <img src="img/logo.svg">
     <button onclick="burgerMenu()" id="header-burger" class="header-btn header-burger"></button>
@@ -21,23 +30,43 @@
 
 <div class="top-container">
     <info><img id="pays">
-    <h1 id="ville"></h1></info>
+        <h1 id="ville"></h1></info>
     <div class="search-div">
         <div class="search-container"><input id="search">
-            <ul id="search-list"></ul>
+            <ul id="search-list">
+                <div class=loading-content>
+                    <div class=loading1></div>
+                    <div class=loading2></div>
+                    <div class=loading3></div>
+                </div>
+            </ul>
         </div>
-        <button onclick="load()"></button>
+        <button class="loupe" onclick="load()"></button>
+        <button class="map" onclick="showMap()"></button>
     </div>
 </div>
 <div id="search-result">
     <div id="search-result-meteo"></div>
-    <div id="search-result-info"></div>
+    <div id="search-result-info">
+        <div class=loading-content>
+            <div class=loading1></div>
+            <div class=loading2></div>
+            <div class=loading3></div>
+        </div>
+
+    </div>
 </div>
 
 
 <footer>
     Meteo 2022
 </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/global.js"></script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhRySahCIjrlvISTjKOA00GjGZJiTRyNo&callback=initMap&v=weekly"
+        async
+></script>
 </body>
 </html>

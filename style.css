@@ -258,20 +258,37 @@ info h1 {
 }
 
 
-.search-div button {
+.search-div .loupe {
     background: #0575ae;
     height: 50px;
-    border: 10px solid #0575ae;
+    border: 10px solid transparent;
     color: #fff;
+    background-repeat: no-repeat;
     width: 50px;
     background-image: url("./img/search.svg");
     background-size: cover;
     padding: 0;
     z-index: 120;
+    transition: 0.2s;
+
+}
+.search-div .map {
+    background: #0575ae;
+    height: 50px;
+    border: 10px solid transparent;
+    color: #fff;
+    width: 50px;
+    background-image: url("./img/map.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    z-index: 120;
+    transition: 0.2s;
 }
 
 button:hover {
     cursor: pointer;
+    background-color: #0c86c5 !important;
 }
 
 
@@ -299,7 +316,9 @@ button:hover {
     padding: 0 0 0 0;
 }
 
-.search-div .search-container ul.toggle {
+
+
+.search-div .search-container ul.toggle,.search-div .search-container ul.loading {
     display: flex;
 }
 
@@ -488,9 +507,16 @@ nav img {
     .meteo-journee-content #temps img {
         display: none;
     }
+    #map{
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 700px) {
+
+
+
+
     .meteo-journee-content #temps {
         display: none;
     }
@@ -762,4 +788,178 @@ nav img {
     }
 
 }
+
+@keyframes loading1 {
+    25% {
+        height: 15px;
+        width: 15px;
+    }
+    50% {
+        height: 0;
+        width: 0;
+    }
+    75% {
+        height: 15px;
+        width: 15px;
+    }
+    from {
+        height: 30px;
+        width: 30px;
+    }
+    to {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@keyframes loading2 {
+    25% {
+        height: 30px;
+        width: 30px;
+    }
+    50% {
+        height: 15px;
+        width: 15px;
+    }
+    75% {
+        height: 0;
+        width: 0;
+    }
+    from {
+        height: 15px;
+        width: 15px;
+    }
+    to {
+        height: 15px;
+        width: 15px;
+    }
+}
+
+@keyframes loading3 {
+    25% {
+        height: 15px;
+        width: 15px;
+    }
+    50% {
+        height: 30px;
+        width: 30px;
+    }
+    75% {
+        height: 15px;
+        width: 15px;
+    }
+    from {
+        height: 0;
+        width: 0;
+    }
+    to {
+        height: 0;
+        width: 0;
+    }
+}
+
+.loading1 {
+    animation: loading1 linear infinite 1.2s;
+    left: 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.loading1, .loading2, .loading3 {
+    background-color: #fff;
+    border-radius: 1000px;
+    margin-left: 0;
+    transition: 1s;
+    top: 50%;
+}
+
+.loading2 {
+    animation: loading2 linear infinite 1.2s;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.loading3 {
+    animation: loading3 linear infinite 1.2s;
+    left: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.loading-content {
+    display: none;
+    justify-content: space-between;
+    position: relative;
+    width: 100px;
+    margin: auto;
+    height: 200px;
+}
+.loading .loading-content{
+    height: 100px;
+    display: flex;
+}
+
+#map{
+    height: 60%;
+    width: 60%;
+    overflow: hidden;
+    position: fixed;
+    z-index: 2000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.map-container{
+    height: 100%;
+    width: 100%;
+    z-index: 2000;
+    position: fixed;
+    backdrop-filter: blur(10px);
+    display: none;
+}
+
+.map-container.toggle{
+    display: block;
+}
+
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2000;
+    background-image: url("img/close.svg");
+    background-size: cover;
+
+    width: 70px;
+    height: 70px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.close:hover{
+    background-color: transparent !important;
+}
+
+
+.valider{
+    position: absolute;
+    bottom: 0;
+left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2000;
+    background-size: cover;
+    background-color: #0a68a0;
+    color: #fff;
+    font-size: 30px;
+    width: 60%;
+    height: 70px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
 
