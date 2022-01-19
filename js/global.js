@@ -1,23 +1,21 @@
-
-
-var jourSemaine = {0: "Dimanche", 1: "Lundi", 2: "Mardi", 3: "Mercredi", 4: "Jeudi", 5: "Vendredi", 6: "Samedi"};
+let jourSemaine = {0: "Dimanche", 1: "Lundi", 2: "Mardi", 3: "Mercredi", 4: "Jeudi", 5: "Vendredi", 6: "Samedi"};
 let latLong = {};
 
-var DATA = {};
+let DATA = {};
 
 
 function createElem(obj, idx, tab) {
-    var divRes = document.getElementById("search-result-meteo");
-    var newDiv = document.createElement("div");
-    var date = document.createElement("p");
-    var temp = document.createElement("div");
-    var humidite = document.createElement("div");
+    let divRes = document.getElementById("search-result-meteo");
+    let newDiv = document.createElement("div");
+    let date = document.createElement("p");
+    let temp = document.createElement("div");
+    let humidite = document.createElement("div");
     humidite.classList.add("humidite");
-    var humiditeIcon = document.createElement("img");
+    let humiditeIcon = document.createElement("img");
 
-    var vent = document.createElement("div");
-    var ventDir = document.createElement("h1");
-    var ventSpeed = document.createElement("h2");
+    let vent = document.createElement("div");
+    let ventDir = document.createElement("h1");
+    let ventSpeed = document.createElement("h2");
     vent.classList.add("vent");
     ventDir.innerHTML = getCardinalDirection(obj.deg);
     ventSpeed.innerHTML = obj.speed + " m/s";
@@ -26,21 +24,21 @@ function createElem(obj, idx, tab) {
 
 
     humiditeIcon.src = "./img/water.svg";
-    var humiditeVal = document.createElement("h2");
+    let humiditeVal = document.createElement("h2");
     humiditeVal.innerHTML = obj.humidity + " %";
     humidite.appendChild(humiditeIcon);
     humidite.appendChild(humiditeVal);
 
     temp.classList.add("temp");
-    var tempMax = document.createElement("h1");
+    let tempMax = document.createElement("h1");
     tempMax.classList.add("tempmax")
-    var tempMin = document.createElement("h1");
+    let tempMin = document.createElement("h1");
     tempMin.classList.add("tempmin")
     tempMax.innerHTML = Math.round(obj.temp.max) + "°C";
     tempMin.innerHTML = Math.round(obj.temp.min) + "°C";
 
 
-    var icon = document.createElement("img");
+    let icon = document.createElement("img");
     icon.src = "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@4x.png";
     date.innerHTML = jourSemaine[new Date(obj.dt * 1000).getDay()] + " " + new Date(obj.dt * 1000).getDate();
 
@@ -49,19 +47,19 @@ function createElem(obj, idx, tab) {
     temp.appendChild(tempMin);
 
 
-    var div = document.createElement("div");
+    let div = document.createElement("div");
     div.classList.add("meteo-journee-content");
 
 
-    var temps = document.createElement("div");
+    let temps = document.createElement("div");
     temps.id = "temps";
 
-    var divextend = document.createElement("div");
+    let divextend = document.createElement("div");
     divextend.classList.add("meteo-journee-extend");
 
     div.onclick = function () {
-        var list = document.getElementsByClassName("meteo-journee");
-        for (var i = 0; i < list.length; i++) {
+        let list = document.getElementsByClassName("meteo-journee");
+        for (let i = 0; i < list.length; i++) {
             if (list[i] != newDiv) {
                 list[i].classList.remove("extend");
             }
@@ -71,10 +69,10 @@ function createElem(obj, idx, tab) {
     };
     newDiv.id = idx;
 
-    var description = document.createElement("p");
-    var coucheLever = document.createElement("div");
-    var couche = document.createElement("div");
-    var leve = document.createElement("div");
+    let description = document.createElement("p");
+    let coucheLever = document.createElement("div");
+    let couche = document.createElement("div");
+    let leve = document.createElement("div");
     description.innerHTML = obj.weather[0].description;
 
     couche.classList.add("couche");
@@ -85,11 +83,9 @@ function createElem(obj, idx, tab) {
     coucheLever.classList.add("couche-leve");
 
 
-
-
-    var divextendcontent = document.createElement("div");
+    let divextendcontent = document.createElement("div");
     divextendcontent.classList.add("meteo-journee-extend-content");
-    var delimiter = document.createElement("div");
+    let delimiter = document.createElement("div");
     delimiter.classList.add("delimiter");
     divextendcontent.appendChild(vent);
     divextendcontent.appendChild(delimiter);
@@ -100,11 +96,9 @@ function createElem(obj, idx, tab) {
     // divextend.appendChild(humidite);
     divextend.appendChild(coucheLever);
     divextend.appendChild(description);
-    var styleElement = document.createElement("style");
-    styleElement.innerHTML = ".leve::before{content: \"Lever \\00000a "+ new Date(obj.sunrise * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}.couche::before{content: \"Coucher \\00000a"+ new Date(obj.sunset * 1000).getUTCHours()+ "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}";
+    let styleElement = document.createElement("style");
+    styleElement.innerHTML = ".leve::before{content: \"Lever \\00000a " + new Date(obj.sunrise * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() + "\" !important;}.couche::before{content: \"Coucher \\00000a" + new Date(obj.sunset * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() + "\" !important;}";
     divextend.appendChild(styleElement);
-
-
 
 
     temps.appendChild(icon);
@@ -128,27 +122,27 @@ function loadInfo(data) {
 
 
     obj = data;
-    var divRes = document.getElementById("search-result-info");
+    let divRes = document.getElementById("search-result-info");
     $(divRes).children().not(':first-child').remove();
-    var newDiv = document.createElement("div");
-    var newDiv2 = document.createElement("div");
+    let newDiv = document.createElement("div");
+    let newDiv2 = document.createElement("div");
 
-    var date = document.createElement("p");
-    var temp = document.createElement("div");
-    var humidite = document.createElement("div");
-    var humiditeIcon = document.createElement("img");
-    var vent = document.createElement("div");
-    var ventDir = document.createElement("h1");
-    var ventSpeed = document.createElement("h2");
-    var humiditeVal = document.createElement("h2");
-    var tempMax = document.createElement("h1");
-    var tempMin = document.createElement("h1");
-    var icon = document.createElement("img");
-    var temps = document.createElement("div");
-    var description = document.createElement("p");
-    var coucheLever = document.createElement("div");
-    var couche = document.createElement("div");
-    var leve = document.createElement("div");
+    let date = document.createElement("p");
+    let temp = document.createElement("div");
+    let humidite = document.createElement("div");
+    let humiditeIcon = document.createElement("img");
+    let vent = document.createElement("div");
+    let ventDir = document.createElement("h1");
+    let ventSpeed = document.createElement("h2");
+    let humiditeVal = document.createElement("h2");
+    let tempMax = document.createElement("h1");
+    let tempMin = document.createElement("h1");
+    let icon = document.createElement("img");
+    let temps = document.createElement("div");
+    let description = document.createElement("p");
+    let coucheLever = document.createElement("div");
+    let couche = document.createElement("div");
+    let leve = document.createElement("div");
 
     couche.classList.add("couche");
     leve.classList.add("leve");
@@ -172,9 +166,9 @@ function loadInfo(data) {
 
     tempMax.innerHTML = Math.round(obj.temp.max) + "°C";
     tempMin.innerHTML = Math.round(obj.temp.min) + "°C";
-    var delimiter = document.createElement("div");
+    let delimiter = document.createElement("div");
     delimiter.classList.add("delimiter");
-    var delimiter2 = document.createElement("div");
+    let delimiter2 = document.createElement("div");
     delimiter2.classList.add("delimiter");
     icon.src = "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@4x.png";
     date.innerHTML = jourSemaine[new Date(obj.dt * 1000).getDay()] + " " + new Date(obj.dt * 1000).getDate();
@@ -196,9 +190,9 @@ function loadInfo(data) {
     divRes.appendChild(newDiv2);
     divRes.appendChild(coucheLever);
     divRes.appendChild(description);
-    var styleElement = document.createElement("style");
-    styleElement.innerHTML = ".leve::before{content: \"Lever \\00000a "+ new Date(obj.sunrise * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}.couche::before{content: \"Coucher \\00000a"+ new Date(obj.sunset * 1000).getUTCHours()+ "h" + new Date(obj.sunrise * 1000).getUTCMinutes() +"\" !important;}";
-divRes.appendChild(styleElement);
+    let styleElement = document.createElement("style");
+    styleElement.innerHTML = ".leve::before{content: \"Lever \\00000a " + new Date(obj.sunrise * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() + "\" !important;}.couche::before{content: \"Coucher \\00000a" + new Date(obj.sunset * 1000).getUTCHours() + "h" + new Date(obj.sunrise * 1000).getUTCMinutes() + "\" !important;}";
+    divRes.appendChild(styleElement);
 }
 
 function getCardinalDirection(angle) {
@@ -207,14 +201,11 @@ function getCardinalDirection(angle) {
 }
 
 function search(search) {
-    var divRes = document.getElementById("search-result-info");
+    let divRes = document.getElementById("search-result-info");
     $(divRes).children().not(':first-child').remove();
     console.log($("search-result-info").slice(1));
 
     divRes.classList.add("loading");
-
-
-
 
 
     fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${search.lat}&lon=${search.lon}&units=metric&lang=fr&cnt=7&appid=ee07e2bf337034f905cde0bdedae3db8`).then(
@@ -242,12 +233,11 @@ document.body.addEventListener('click', function () {
 }, true);
 
 function load() {
-    var recherche = document.getElementById("search-list");
+    let recherche = document.getElementById("search-list");
     $(recherche).children().not(':first-child').remove();
     document.getElementById("search-list").classList.add("loading");
 
-    // https://openweathermap.org/data/2.5/find?q=boston&appid=ee07e2bf337034f905cde0bdedae3db8&units=metric
-    var search = document.getElementById('search').value;
+    let search = document.getElementById('search').value;
     fetch("https://openweathermap.org/data/2.5/find?q=" + search + "&appid=439d4b804bc8187953eb36d2a8c26a02&units=metric").then(
         response => response.json()).then(
         data => {
@@ -264,16 +254,17 @@ function load() {
         document.getElementById("search-list").classList.remove("loading");
     });
 }
+
 function createSearchList(obj, idx, tab) {
-    var span = document.createElement("span");
+    let span = document.createElement("span");
     span.onclick = function () {
         document.getElementById("search-list").classList.remove("toggle");
         console.log(obj.name);
         search(obj.coord);
     }
-    var titre = document.createElement("h3");
+    let titre = document.createElement("h3");
     titre.innerHTML = obj.name;
-    var img = document.createElement("img");
+    let img = document.createElement("img");
 
 
     img.src = "https://countryflagsapi.com/png/" + obj.sys.country;
@@ -282,15 +273,15 @@ function createSearchList(obj, idx, tab) {
     document.getElementById("search-list").appendChild(span);
 
 
-    var tempMax = document.createElement("h1");
+    let tempMax = document.createElement("h1");
     tempMax.classList.add("tempmax")
-    var tempMin = document.createElement("h1");
+    let tempMin = document.createElement("h1");
     tempMin.classList.add("tempmin")
-    var icon = document.createElement("img");
-    var temps = document.createElement("div");
-    var temp = document.createElement("div");
-    tempMax.innerHTML = Math.round(obj.main.temp_max + -273,15) + "°C";
-    tempMin.innerHTML = Math.round(obj.main.temp_min + -273,15) + "°C";
+    let icon = document.createElement("img");
+    let temps = document.createElement("div");
+    let temp = document.createElement("div");
+    tempMax.innerHTML = Math.round(obj.main.temp_max + -273, 15) + "°C";
+    tempMin.innerHTML = Math.round(obj.main.temp_min + -273, 15) + "°C";
     icon.src = "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@4x.png";
 
     temp.appendChild(tempMax);
@@ -330,8 +321,6 @@ function position(position) {
 }
 
 
-
-
 document.getElementById("search").onkeypress = function (e) {
     if (e.keyCode == 13) {
         load();
@@ -351,21 +340,21 @@ function burgerMenu() {
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position);
 } else {
-    position({ coords: { latitude: 48.856614, longitude: 2.3522219 } });
+    position({coords: {latitude: 48.856614, longitude: 2.3522219}});
 }
 
 
 function initMap() {
-    const myLatlng = { lat: -25.363, lng: 131.044 };
+    const myLatlng = {lat: -25.363, lng: 131.044};
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
         center: myLatlng,
     });
-    google.maps.event.addListener(map, 'click', function(event) {
+    google.maps.event.addListener(map, 'click', function (event) {
         marker.setPosition(event.latLng);
         latLong = event.latLng.toJSON();
     });
-    var marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({
         position: location,
         map: map
     });
@@ -373,10 +362,10 @@ function initMap() {
 }
 
 
-function valider(){
+function valider() {
     console.log(latLong);
     document.getElementsByClassName("map-container")[0].classList.remove("toggle");
-    position({ coords: { latitude: latLong.lat, longitude: latLong.lng } });
+    position({coords: {latitude: latLong.lat, longitude: latLong.lng}});
 }
 
 function showMap() {
