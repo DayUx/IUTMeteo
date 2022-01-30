@@ -1,32 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection"/>
+
     <link rel="stylesheet" href="../style.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Meteo</title>
 </head>
 <body>
-<nav>
-    <img src="../img/logo.svg">
-    <button onclick="burgerMenu()" id="header-burger" class="header-btn header-burger"></button>
-    <span id="menu">
-    <a href="../">Accueil</a>
-    <a href="../contact">Contact</a>
-    <a href="#">Aide</a>
-    </span>
-</nav>
+<div class="map-container">
+    <button onclick="showMap()" class="close"></button>
+    <button onclick="valider()" class="valider"> Valider</button>
 
-<p class="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vestibulum lacinia pharetra. Donec a euismod tortor, ut molestie lorem. Vestibulum sed libero et orci semper egestas sit amet a nisi. Nullam convallis tempus accumsan. Donec leo risus, consectetur nec nulla ut, condimentum scelerisque purus. Integer in ex ultrices, sollicitudin massa eu, rutrum turpis. Ut at mi rhoncus dui pretium blandit nec volutpat massa. Nunc vehicula augue eu nisi fringilla, vitae vestibulum elit euismod. Mauris id ipsum lectus. Phasellus eleifend egestas tincidunt. Cras aliquet ante a enim mollis consequat.
+    <div id="map"></div></div>
 
-    In hendrerit mi elit. In id ante vel quam cursus efficitur. Aliquam dapibus pellentesque ante, sed malesuada arcu volutpat non. Sed a lobortis ligula. Suspendisse augue tellus, tempus ac placerat eget, fermentum a leo. Sed euismod dictum nibh id sollicitudin. Nunc egestas dictum bibendum. Aenean mattis vel enim non ultricies. Pellentesque vel lobortis metus. Cras vel varius eros. Curabitur fringilla sem sed metus commodo, nec porta lacus tincidunt. Pellentesque consequat ultrices rhoncus. In feugiat ultrices tellus, quis cursus lectus cursus eget. Vivamus tortor dui, semper quis viverra at, gravida varius arcu. Sed dolor massa, imperdiet vitae erat non, ultrices suscipit lectus.</p>
 
-<footer>
-    Meteo 2022
+<header >
+    <nav class=" grey darken-3">
+        <div class="nav-wrapper">
+            <a href=".." class="brand-logo"><img class="responsive-img" src="../img/logo.svg"></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="..">Accueil</a></li>
+                <li><a href="../contact">Contact</a></li>
+                <li><a href="../aide">Aide</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="slide-out">
+        <li><a href="..">Accueil</a></li>
+        <li><a href="../contact">Contact</a></li>
+        <li><a href="../aide">Aide</a></li>
+    </ul>
+</header>
+<main>
+    <p class="info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vestibulum lacinia pharetra. Donec a euismod tortor, ut molestie lorem. Vestibulum sed libero et orci semper egestas sit amet a nisi. Nullam convallis tempus accumsan. Donec leo risus, consectetur nec nulla ut, condimentum scelerisque purus. Integer in ex ultrices, sollicitudin massa eu, rutrum turpis. Ut at mi rhoncus dui pretium blandit nec volutpat massa. Nunc vehicula augue eu nisi fringilla, vitae vestibulum elit euismod. Mauris id ipsum lectus. Phasellus eleifend egestas tincidunt. Cras aliquet ante a enim mollis consequat.
+
+        In hendrerit mi elit. In id ante vel quam cursus efficitur. Aliquam dapibus pellentesque ante, sed malesuada arcu volutpat non. Sed a lobortis ligula. Suspendisse augue tellus, tempus ac placerat eget, fermentum a leo. Sed euismod dictum nibh id sollicitudin. Nunc egestas dictum bibendum. Aenean mattis vel enim non ultricies. Pellentesque vel lobortis metus. Cras vel varius eros. Curabitur fringilla sem sed metus commodo, nec porta lacus tincidunt. Pellentesque consequat ultrices rhoncus. In feugiat ultrices tellus, quis cursus lectus cursus eget. Vivamus tortor dui, semper quis viverra at, gravida varius arcu. Sed dolor massa, imperdiet vitae erat non, ultrices suscipit lectus.</p>
+
+</main>
+<footer class="page-footer grey darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <p class="grey-text text-lighten-4">Site meteo realise a l'aide de l'api openweather</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Liens</h5>
+                <ul>
+
+
+                    <li><i class="fab fa-github" class="material-icons"></i><a class="grey-text text-lighten-3"
+                                                                               href="https://github.com/DayUx/IUTMeteo">
+                        GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright grey darken-4">
+        <div class="container center-align">
+            © 2022 IUTMeteo
+        </div>
+    </div>
 </footer>
-<script src="js/global.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/global.js"></script>
+<script src="https://kit.fontawesome.com/9d31c70e33.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="../js/materialize.min.js"></script>
+
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhRySahCIjrlvISTjKOA00GjGZJiTRyNo&callback=initMap&v=weekly"
+        async
+></script>
 </body>
 </html>
