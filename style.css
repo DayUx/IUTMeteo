@@ -853,12 +853,12 @@ p.info{
     display: none;
     justify-content: space-between;
     position: relative;
-    width: 100px;
+    width: 100%;
     margin: auto;
     height: 200px;
 }
 .loading .loading-content{
-    height: 100px;
+    height: 100%;
     display: flex;
 }
 

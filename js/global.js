@@ -52,7 +52,7 @@ function createElem(obj, idx, tab) {
 
 function loadInfo(data) {
     obj = data;
-    $("#search-result-info").html("");
+    $("#search-result-info").children().not(':first-child').remove();
     delimiter = $("<div class='delimiter'></div>");
     delimiter2 = $("<div class='delimiter'></div>");
     leve = $("<div class='leve'></div>");
