@@ -3,7 +3,9 @@ let latLong = {};
 
 let DATA = {};
 
-
+$(document).ready(function () {
+    $('.sidenav').sidenav();
+});
 function createElem(obj, idx, tab) {
     let divRes = document.getElementById("search-result-meteo");
     let newDiv = document.createElement("div");
