@@ -97,7 +97,7 @@ function search(search) {
             if (data.city !== undefined) {
                 DATA = data;
                 $("#ville").html(data.city.name);
-                $("#pays").attr("src", `https://flagsapi.com/${data.city.country}/64.png`);
+                $("#pays").attr("src", `https://flagsapi.com/${data.city.country}/flat/64.png`);
                 $("#search-result-meteo").html("");
                 $("#search-result-info").removeClass("loading");
                 for (let i = 0; i < data.list.length; i++) {
@@ -145,7 +145,7 @@ function load() {
 
 function createSearchList(obj, idx, tab) {
     titre = $("<h3>").html(obj.name);
-    img = $("<img>").attr("src", `https://flagsapi.com/${obj.sys.country}/64.png`);
+    img = $("<img>").attr("src", `https://flagsapi.com/${obj.sys.country}/flat/64.png`);
     tempMax = $("<h1></h1>").addClass("tempmax").html(Math.round(obj.main.temp_max + -273, 15) + "°C");
     tempMin = $("<h1></h1>").addClass("tempmin").html(Math.round(obj.main.temp_min + -273, 15) + "°C");
     icon = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + obj.weather[0].icon + "@4x.png");
@@ -173,7 +173,7 @@ function position(position) {
             if (data.city.country == "") {
                 $("#pays").attr("src", "img/nodata.svg");
             } else {
-                $("#pays").attr("src", `https://flagsapi.com/${data.city.country}/64.png`);
+                $("#pays").attr("src", `https://flagsapi.com/${data.city.country}/flat/64.png`);
             }
             $("#search-result-meteo").html("");
 
